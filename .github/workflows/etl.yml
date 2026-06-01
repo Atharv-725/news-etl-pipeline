@@ -50,4 +50,6 @@ jobs:
       - name: Run ETL Pipeline
         env:
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
-        run: python src/etl/pipeline.py
+        run: |
+          cd src/etl
+          python pipeline.py
