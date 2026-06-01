@@ -1,9 +1,9 @@
 import mysql.connector
 
 DB_CONFIG = {
-    "host":     "localhost",
+    "host":     "mysql",
     "user":     "root",
-    "password": "Atharv@123",
+    "password": "root",
     "database": "news_pipeline"
 }
 

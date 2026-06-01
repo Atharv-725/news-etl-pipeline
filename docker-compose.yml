@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: news_pipeline
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
+
+  etl:
+    build: .
+    depends_on:
+      - mysql
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=news_pipeline
+    ports:
+      - "8501:8501"
+
+volumes:
+  mysql_data:

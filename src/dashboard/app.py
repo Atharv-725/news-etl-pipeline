@@ -4,9 +4,9 @@ import mysql.connector
 import plotly.express as px
 
 DB_CONFIG = {
-    "host":     "localhost",
-    "user":     "root",
-    "password": "Atharv@123",
+    "host": "mysql",
+    "user": "root",
+    "password": "root",
     "database": "news_pipeline"
 }
 
