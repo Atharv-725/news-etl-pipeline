@@ -1,61 +1,45 @@
-## ✨ Features
-- Live news ingestion from NewsAPI
-- Automated sentiment analysis (Positive/Negative/Neutral)
-- MySQL database storage
-- Interactive dashboard with charts and filters
-- Runs automatically every 5 minutes
+# 📰 Real-Time News ETL Pipeline
 
-## 🛠️ Tech Stack
-- **Python** — Core language
-- **Pandas** — Data transformation
-- **MySQL** — Database storage
-- **Streamlit** — Dashboard
-- **Plotly** — Charts
-- **NewsAPI** — Live data source
+![GitHub Actions](https://github.com/Atharv-725/news-etl-pipeline/actions/workflows/etl.yml/badge.svg)
 
-## 📊 Dashboard Preview
-- KPI metrics (Total, Positive, Negative, Neutral articles)
-- Sentiment distribution pie chart
-- Top news sources bar chart
-- Latest articles table
+A production-grade ETL pipeline that fetches live news, performs sentiment analysis, stores data in MySQL, and visualizes it on a Streamlit dashboard — fully containerized with Docker and automated with GitHub Actions.
 
-## 🚀 How to Run
+## 🏗️ Architecture
 
-### 1. Install dependencies
+
+## ⚙️ Tech Stack
+- **Python** — ETL logic
+- **MySQL** — Data storage
+- **Streamlit + Plotly** — Dashboard
+- **Docker + docker-compose** — Containerization
+- **GitHub Actions** — Automated hourly pipeline
+
+## 🚀 Quick Start
+
+### Option 1 — Run with Docker (Recommended)
 ```bash
-pip install pandas mysql-connector-python streamlit plotly requests
+git clone https://github.com/Atharv-725/news-etl-pipeline.git
+cd news-etl-pipeline
+docker-compose up --build
 ```
+Open http://localhost:8501
 
-### 2. Set up MySQL
-```sql
-CREATE DATABASE news_pipeline;
-USE news_pipeline;
-CREATE TABLE news_articles (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(500),
-    description TEXT,
-    source VARCHAR(100),
-    url VARCHAR(1000),
-    published_at VARCHAR(50),
-    sentiment VARCHAR(20),
-    processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-
-### 3. Run the ETL Pipeline
+### Option 2 — Run Locally
 ```bash
-python src/etl/pipeline.py
-```
-
-### 4. Launch the Dashboard
-```bash
+pip install -r requirements.txt
+cd src/etl
+python pipeline.py
 streamlit run src/dashboard/app.py
 ```
 
-## 📈 Results
-- Processes 30-50 articles per run
-- Sentiment accuracy ~85%
-- Pipeline runs every 5 minutes automatically
+## 📊 Results
+- Fetches 30 articles per run
+- Sentiment analysis (Positive / Negative / Neutral)
+- Auto-refreshing dashboard
+- Pipeline runs every hour via GitHub Actions
+
+## 🤖 CI/CD
+GitHub Actions workflow runs the ETL pipeline every hour automatically.
 
 ## 👨‍💻 Author
-Atharv Dorle
+**Atharv Dorle**
